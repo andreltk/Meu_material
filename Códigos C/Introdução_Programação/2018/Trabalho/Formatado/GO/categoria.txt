@@ -1,0 +1,5 @@
+1   arroz
+2   carro
+3   balas
+4   cabide
+0	

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="Generator" content="Kate, the KDE Advanced Text Editor" />
+<title>exerc06.c</title>
+</head>
+<!-- Highlighting: "C" -->
+<body>
+<pre style='color:#cfcfc2;background-color:#232629;'>
+<span style='color:#27ae60;'>#include</span><span style='color:#27ae60;'>&lt;stdio.h&gt;</span>
+<span style='color:#27ae60;'>#include</span><span style='color:#27ae60;'>&lt;stdlib.h&gt;</span>
+<span style='color:#27ae60;'>#include</span><span style='color:#27ae60;'>&lt;string.h&gt;</span>
+
+<span style='color:#27ae60;'>#define MAX 100</span>
+
+<b>typedef</b> <b>struct</b> palavra Palavra;
+
+<b>struct</b> palavra {
+    <span style='color:#2980b9;'>char</span> * nome;
+    <span style='color:#2980b9;'>char</span> * sinonimo;
+};
+
+Palavra * palavra_cria (<span style='color:#2980b9;'>char</span> * nome, <span style='color:#2980b9;'>char</span> * sinonimo);
+<span style='color:#2980b9;'>void</span> palavra_libera (Palavra * p);
+<span style='color:#2980b9;'>char</span> * palavra_obtem_nome (Palavra * p);
+<span style='color:#2980b9;'>char</span> * palavra_obtem_sinonimo (Palavra * p);
+<span style='color:#2980b9;'>int</span> palavra_compara (Palavra * p1, Palavra * p2);
+
+<span style='color:#7a7c7d;'>//////////////////////////////////////////////////////////</span>
+
+
+<span style='color:#2980b9;'>int</span> main(){
+    
+    <span style='color:#2980b9;'>int</span> n, contador, resultado;
+    <span style='color:#2980b9;'>char</span> opcao, nome[MAX], sinonimo[MAX], auxiliar[MAX];
+    
+    scanf(<span style='color:#f44f4f;'>&quot;%d&quot;</span>,&amp;n);
+    Palavra * vetor [n];
+    
+    <b><span style='color:#fdbc4b;'>for</span></b>(contador = <span style='color:#f67400;'>0</span>; contador &lt; n; contador++){
+        
+        scanf(<span style='color:#f44f4f;'>&quot; </span><span style='color:#3daee9;'>\n</span><span style='color:#f44f4f;'>%s [^</span><span style='color:#3daee9;'>\n</span><span style='color:#f44f4f;'>]%s&quot;</span>,nome,sinonimo);
+        vetor[contador] = palavra_cria(nome,sinonimo);
+        
+    }
+    
+    <b><span style='color:#fdbc4b;'>do</span></b>{
+        
+        scanf(<span style='color:#f44f4f;'>&quot;</span><span style='color:#3daee9;'>\n</span><span style='color:#f44f4f;'> %c&quot;</span>,&amp;opcao);
+        
+        <b><span style='color:#fdbc4b;'>if</span></b>(opcao == <span style='color:#3daee9;'>'C'</span>){
+            
+            scanf(<span style='color:#f44f4f;'>&quot;</span><span style='color:#3daee9;'>\n</span><span style='color:#f44f4f;'> [^</span><span style='color:#3daee9;'>\n</span><span style='color:#f44f4f;'>]%s&quot;</span>,nome);
+            printf(<span style='color:#f44f4f;'>&quot;CONSULTA %s &quot;</span>,nome);
+            
+            resultado = <span style='color:#f67400;'>1</span>;
+            
+            <b><span style='color:#fdbc4b;'>for</span></b>(contador = <span style='color:#f67400;'>0</span>; contador &lt; n; contador++){
+                
+                auxiliar = palavra_obtem_nome(vetor[contador]);
+                
+                resultado = strcmp(auxiliar, nome);
+                
+                <b><span style='color:#fdbc4b;'>if</span></b>(resultado == <span style='color:#f67400;'>0</span>){
+                  
+                    auxiliar = palavra_obtem_sinonimo(vetor[contador]);
+                    printf(<span style='color:#f44f4f;'>&quot;%s</span><span style='color:#3daee9;'>\n</span><span style='color:#f44f4f;'>&quot;</span>,auxiliar);
+                    
+                    <b><span style='color:#fdbc4b;'>break</span></b>;
+                }
+            }
+            
+            <b><span style='color:#fdbc4b;'>if</span></b>(resultado != <span style='color:#f67400;'>0</span>){
+                printf(<span style='color:#f44f4f;'>&quot;INEXISTENTE</span><span style='color:#3daee9;'>\n</span><span style='color:#f44f4f;'>&quot;</span>);
+            }
+        }
+        
+    } <b><span style='color:#fdbc4b;'>while</span></b>(opcao != <span style='color:#3daee9;'>'F'</span>);
+    
+    
+    
+    
+    
+}
+
+
+<span style='color:#7a7c7d;'>//////////////////////////////////////////////////////////</span>
+Palavra * palavra_cria (<span style='color:#2980b9;'>char</span> * nome, <span style='color:#2980b9;'>char</span> * sinonimo){
+    
+    Palavra * auxiliar;
+    
+    auxiliar = (Palavra *)malloc(<b>sizeof</b>(Palavra));
+    
+    auxiliar-&gt;nome = nome;
+    auxiliar-&gt;sinonimo = sinonimo;
+    
+    <b><span style='color:#fdbc4b;'>return</span></b> auxiliar;
+}
+<span style='color:#2980b9;'>void</span> palavra_libera (Palavra * p){
+    
+    Palavra * auxiliar;
+    
+    auxiliar = p;    
+    free(auxiliar);
+    
+    auxiliar = p = NULL;
+    
+    <b><span style='color:#fdbc4b;'>return</span></b>;
+}
+<span style='color:#2980b9;'>char</span> * palavra_obtem_nome (Palavra * p){
+    
+    <span style='color:#2980b9;'>char</span> auxiliar[MAX];
+    
+    strcpy(p-&gt;nome, auxiliar);
+    
+    <b><span style='color:#fdbc4b;'>return</span></b> auxiliar;
+    
+    
+}
+<span style='color:#2980b9;'>char</span> * palavra_obtem_sinonimo (Palavra * p){
+    
+    <span style='color:#2980b9;'>char</span> auxiliar[MAX];
+    
+    strcpy(p-&gt;sinonimo, auxiliar);
+    
+    <b><span style='color:#fdbc4b;'>return</span></b> auxiliar;
+}
+<span style='color:#2980b9;'>int</span> palavra_compara (Palavra * p1, Palavra * p2){
+    
+    <span style='color:#2980b9;'>int</span> resultado_1; resultado_2;
+    
+    <span style='color:#2980b9;'>char</span> auxiliar_1[MAX], auxiliar_2[MAX];
+    
+    strcpy(p1-&gt;nome, auxiliar_1);
+    strcpy(p2-&gt;nome, auxiliar_2);
+    
+    resultado_1 =  strcmp(auxiliar_1, auxiliar_2);
+    
+    
+    strcpy(p1-&gt;sinonimo, auxiliar_1);
+    strcpy(p2-&gt;sinonimo, auxiliar_2);
+    
+    resultado_2 =  strcmp(auxiliar_1, auxiliar_2);
+    <span style='color:#7a7c7d;'>//Verificar se tal funciona</span>
+    <b><span style='color:#fdbc4b;'>return</span></b> resultado_1 + resultado_2;
+    
+}
+
+</pre>
+</body>
+</html>

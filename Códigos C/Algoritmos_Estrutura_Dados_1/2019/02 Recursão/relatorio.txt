@@ -1,0 +1,185 @@
+		Processando 0 X 0	Vez = 0	Linic = 0	Cinic = 0
+		Processando 0 X 1	Vez = 1	Linic = 0	Cinic = 0
+		Processando 0 X 2	Vez = 2	Linic = 0	Cinic = 0
+		Processando 1 X 2	Vez = 3	Linic = 0	Cinic = 0
+		Processando 1 X 1	Vez = 4	Linic = 0	Cinic = 0
+		Processando 0 X 1	Vez = 5	Linic = 0	Cinic = 0
+		Processando 0 X 2	Vez = 6	Linic = 0	Cinic = 0
+		Processando 1 X 2	Vez = 7	Linic = 0	Cinic = 0
+		Processando 1 X 1	Vez = 8	Linic = 0	Cinic = 0
+		Processando 0 X 1	Vez = 9	Linic = 0	Cinic = 0
+		Processando 0 X 2	Vez = 10	Linic = 0	Cinic = 0
+		Processando 1 X 2	Vez = 11	Linic = 0	Cinic = 0
+		Processando 1 X 1	Vez = 12	Linic = 0	Cinic = 0
+		Processando 0 X 1	Vez = 13	Linic = 0	Cinic = 0
+		Processando 0 X 2	Vez = 14	Linic = 0	Cinic = 0
+		Processando 1 X 2	Vez = 15	Linic = 0	Cinic = 0
+		Processando 1 X 1	Vez = 16	Linic = 0	Cinic = 0
+		Processando 0 X 1	Vez = 17	Linic = 0	Cinic = 0
+4 if
+
+
+Verificado 0 X 0	Resultado = 2	Marcando 0 X 0	Linic = 0/Cinic = 0
+Encontrada célula introdutória na linha 0 / coluna 0
+		Processando 0 X 1	Vez = 0	Linic = 0	Cinic = 1
+		Processando 0 X 2	Vez = 1	Linic = 0	Cinic = 1
+		Processando 1 X 2	Vez = 2	Linic = 0	Cinic = 1
+		Processando 1 X 1	Vez = 3	Linic = 0	Cinic = 1
+		Processando 0 X 1	Vez = 4	Linic = 0	Cinic = 1
+3 if
+
+
+Verificado 0 X 1	Resultado = 1	Marcando 0 X 1	Linic = 0/Cinic = 1
+Encontrada célula segura na linha 0 / coluna 1
+	Marcando 0 X 2	Linic = 0/Cinic = 1
+Encontrada célula segura na linha 0 / coluna 2
+	Marcando 1 X 2	Linic = 0/Cinic = 1
+Encontrada célula segura na linha 1 / coluna 2
+	Marcando 1 X 1	Linic = 0/Cinic = 1
+Encontrada célula segura na linha 1 / coluna 1
+	Marcando 0 X 1	Linic = 0/Cinic = 1
+Encontrada célula segura na linha 0 / coluna 1
+		Processando 0 X 2	Vez = 0	Linic = 0	Cinic = 2
+1 if
+
+
+Verificado 0 X 2	Resultado = 2	Marcando 0 X 2	Linic = 0/Cinic = 2
+Encontrada célula introdutória na linha 0 / coluna 2
+		Processando 0 X 3	Vez = 0	Linic = 0	Cinic = 3
+HAHAHAHA 4
+
+
+Verificado 0 X 3	Resultado = 2	Marcando 0 X 3	Linic = 0/Cinic = 3
+Encontrada célula introdutória na linha 0 / coluna 3
+		Processando 0 X 4	Vez = 0	Linic = 0	Cinic = 4
+
+
+Verificado 0 X 4	Resultado = 0	Marcando 0 X 4	Linic = 0/Cinic = 4
+Fim por insegurança
+		Processando 1 X 0	Vez = 0	Linic = 1	Cinic = 0
+HAHAHAHA 1
+
+
+Verificado 1 X 0	Resultado = 2	Marcando 1 X 0	Linic = 1/Cinic = 0
+Encontrada célula introdutória na linha 1 / coluna 0
+		Processando 1 X 1	Vez = 0	Linic = 1	Cinic = 1
+1 if
+
+
+Verificado 1 X 1	Resultado = 2	Marcando 1 X 1	Linic = 1/Cinic = 1
+Encontrada célula introdutória na linha 1 / coluna 1
+		Processando 1 X 2	Vez = 0	Linic = 1	Cinic = 2
+1 if
+
+
+Verificado 1 X 2	Resultado = 2	Marcando 1 X 2	Linic = 1/Cinic = 2
+Encontrada célula introdutória na linha 1 / coluna 2
+		Processando 1 X 3	Vez = 0	Linic = 1	Cinic = 3
+HAHAHAHA 4
+
+
+Verificado 1 X 3	Resultado = 2	Marcando 1 X 3	Linic = 1/Cinic = 3
+Encontrada célula introdutória na linha 1 / coluna 3
+		Processando 1 X 4	Vez = 0	Linic = 1	Cinic = 4
+
+
+Verificado 1 X 4	Resultado = 0	Marcando 1 X 4	Linic = 1/Cinic = 4
+Fim por insegurança
+		Processando 2 X 0	Vez = 0	Linic = 2	Cinic = 0
+HAHAHAHA 1
+
+
+Verificado 2 X 0	Resultado = 2	Marcando 2 X 0	Linic = 2/Cinic = 0
+Encontrada célula introdutória na linha 2 / coluna 0
+		Processando 2 X 1	Vez = 0	Linic = 2	Cinic = 1
+HAHAHAHA 1
+
+
+Verificado 2 X 1	Resultado = 2	Marcando 2 X 1	Linic = 2/Cinic = 1
+Encontrada célula introdutória na linha 2 / coluna 1
+		Processando 2 X 2	Vez = 0	Linic = 2	Cinic = 2
+HAHAHAHA 1
+
+
+Verificado 2 X 2	Resultado = 2	Marcando 2 X 2	Linic = 2/Cinic = 2
+Encontrada célula introdutória na linha 2 / coluna 2
+		Processando 2 X 3	Vez = 0	Linic = 2	Cinic = 3
+Erro 3
+
+
+Verificado 2 X 3	Resultado = 3	Marcando 2 X 3	Linic = 2/Cinic = 3
+Encontrada célula insegura na linha 2 / coluna 3
+Linic 2 ---- Cinic 3	Marcando célula insegura na linha 2 / coluna 3
+	Marcando 2 X 4	Linic = 2/Cinic = 3
+Encontrada célula insegura na linha 2 / coluna 4
+Fim por insegurança
+		Processando 2 X 4	Vez = 0	Linic = 2	Cinic = 4
+
+
+Verificado 2 X 4	Resultado = 0	Marcando 2 X 4	Linic = 2/Cinic = 4
+Fim por insegurança
+		Processando 3 X 0	Vez = 0	Linic = 3	Cinic = 0
+		Processando 3 X 1	Vez = 1	Linic = 3	Cinic = 0
+		Processando 3 X 2	Vez = 2	Linic = 3	Cinic = 0
+		Processando 3 X 3	Vez = 3	Linic = 3	Cinic = 0
+		Processando 2 X 3	Vez = 4	Linic = 3	Cinic = 0
+
+
+Verificado 3 X 0	Resultado = 79	Marcando 3 X 0	Linic = 3/Cinic = 0
+Linic 3 ---- Cinic 0	Marcando célula insegura na linha 3 / coluna 0
+	Marcando 3 X 1	Linic = 3/Cinic = 0
+Encontrada célula insegura na linha 3 / coluna 1
+Linic 3 ---- Cinic 0	Marcando célula insegura na linha 3 / coluna 1
+	Marcando 3 X 2	Linic = 3/Cinic = 0
+Encontrada célula insegura na linha 3 / coluna 2
+Linic 3 ---- Cinic 0	Marcando célula insegura na linha 3 / coluna 2
+	Marcando 3 X 3	Linic = 3/Cinic = 0
+Encontrada célula insegura na linha 3 / coluna 3
+Linic 3 ---- Cinic 0	Marcando célula insegura na linha 3 / coluna 3
+	Marcando 2 X 3	Linic = 3/Cinic = 0
+Encontrada célula insegura na linha 2 / coluna 3
+Linic 3 ---- Cinic 0	Marcando célula insegura na linha 2 / coluna 3
+		Processando 3 X 1	Vez = 0	Linic = 3	Cinic = 1
+
+
+Verificado 3 X 1	Resultado = 79	Marcando 3 X 1	Linic = 3/Cinic = 1
+Linic 3 ---- Cinic 1	Marcando célula insegura na linha 3 / coluna 1
+		Processando 3 X 2	Vez = 0	Linic = 3	Cinic = 2
+
+
+Verificado 3 X 2	Resultado = 79	Marcando 3 X 2	Linic = 3/Cinic = 2
+Linic 3 ---- Cinic 2	Marcando célula insegura na linha 3 / coluna 2
+		Processando 3 X 3	Vez = 0	Linic = 3	Cinic = 3
+
+
+Verificado 3 X 3	Resultado = 79	Marcando 3 X 3	Linic = 3/Cinic = 3
+Linic 3 ---- Cinic 3	Marcando célula insegura na linha 3 / coluna 3
+		Processando 3 X 4	Vez = 0	Linic = 3	Cinic = 4
+
+
+Verificado 3 X 4	Resultado = 0	Marcando 3 X 4	Linic = 3/Cinic = 4
+Fim por insegurança
+		Processando 4 X 0	Vez = 0	Linic = 4	Cinic = 0
+
+
+Verificado 4 X 0	Resultado = 0	Marcando 4 X 0	Linic = 4/Cinic = 0
+Fim por insegurança
+		Processando 4 X 1	Vez = 0	Linic = 4	Cinic = 1
+
+
+Verificado 4 X 1	Resultado = 0	Marcando 4 X 1	Linic = 4/Cinic = 1
+Fim por insegurança
+		Processando 4 X 2	Vez = 0	Linic = 4	Cinic = 2
+
+
+Verificado 4 X 2	Resultado = 0	Marcando 4 X 2	Linic = 4/Cinic = 2
+Fim por insegurança
+		Processando 4 X 3	Vez = 0	Linic = 4	Cinic = 3
+
+
+Verificado 4 X 3	Resultado = 0	Marcando 4 X 3	Linic = 4/Cinic = 3
+Fim por insegurança
+ILLI
+ILLI
+IIIO
+OOOO

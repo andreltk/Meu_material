@@ -1,0 +1,71 @@
+
+5 8
+.N.N.N.N
+.N...N..
+...N....
+NN.N.NN.
+.N.NN...
+8
+1 3
+1 4
+1 5
+2 1
+3 4
+4 6
+4 4
+5 2
+
+
+5 8
+NNNNNNNN
+.N...N..
+.NNNNN..
+NN.N.NN.
+.NNNNN..
+1
+1 1
+
+
+ /////Verificação
+    if(coluna - 1 > 0 ){
+        
+        
+        if(matriz[linha][coluna - 1] == 'N'){
+            printf("Verificado 1\n");
+            afunda(matriz, max_linha, max_coluna, linha, coluna - 1);
+            
+        }
+    }
+    /////Verificação
+    
+    
+    else if(coluna + 1 < max_coluna ){
+        
+        
+        if(matriz[linha][coluna + 1] == 'N'){
+            afunda(matriz, max_linha, max_coluna, linha, coluna + 1);
+        }
+        
+    }
+    /////Verificação
+    
+    else if(linha - 1 > 0 ){
+        
+        if(matriz[linha-1][coluna] == 'N'){
+            afunda(matriz, max_linha, max_coluna, linha - 1, coluna);
+        }
+    }
+    /////Verificação
+    
+    else if(linha + 1 < max_linha ){
+        return;
+        
+        
+        if(matriz[linha+1][coluna] == 'N'){
+            afunda(matriz, max_linha, max_coluna, linha + 1, coluna);
+        }
+    }
+    
+    printf("\t ACABOU\n");
+    return;
+    

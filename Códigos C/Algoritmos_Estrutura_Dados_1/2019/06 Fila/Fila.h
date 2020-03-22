@@ -1,0 +1,11 @@
+typedef struct fila Fila;
+Fila * fila_cria (int maxTamanho);
+Fila * fila_copia (Fila * p);
+void fila_libera (Fila * p);
+int fila_insere (Fila * p, char * elemento);
+char * fila_remove (Fila * p);
+char * fila_obtem_primeiro  (Fila * p);
+int fila_obtem_tamanho  (Fila * p);
+int fila_se_vazia (Fila * p);
+int fila_se_cheia (Fila * p);
+char * fila_imprime  (Fila * p);

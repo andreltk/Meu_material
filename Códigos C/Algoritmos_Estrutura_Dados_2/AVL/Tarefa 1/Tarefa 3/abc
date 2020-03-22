@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="Generator" content="Kate, the KDE Advanced Text Editor" />
+<title>abc.c</title>
+</head>
+<!-- Highlighting: "C" -->
+<body>
+<pre style='color:#cfcfc2;background-color:#232629;'>
+<span style='color:#27ae60;'>#include </span><span style='color:#27ae60;'>&lt;stdio.h&gt;</span>
+<span style='color:#27ae60;'>#include </span><span style='color:#27ae60;'>&lt;stdlib.h&gt;</span>
+<span style='color:#27ae60;'>#include </span><span style='color:#27ae60;'>&quot;ArvoreAVL.h&quot;</span>
+<span style='color:#27ae60;'>#include </span><span style='color:#27ae60;'>&quot;Lista.h&quot;</span>
+
+<span style='color:#2980b9;'>int</span> main(){
+    ArvAVL* avl;
+    Lista* emOrdem;
+    <span style='color:#2980b9;'>int</span> res,i;
+    <span style='color:#2980b9;'>int</span> N = <span style='color:#f67400;'>10</span>, dados[<span style='color:#f67400;'>10</span>] = {<span style='color:#f67400;'>50</span>,<span style='color:#f67400;'>25</span>,<span style='color:#f67400;'>10</span>,<span style='color:#f67400;'>5</span>,<span style='color:#f67400;'>7</span>,<span style='color:#f67400;'>3</span>,<span style='color:#f67400;'>30</span>,<span style='color:#f67400;'>20</span>,<span style='color:#f67400;'>8</span>,<span style='color:#f67400;'>15</span>};
+    
+    avl = cria_ArvAVL();
+    emOrdem = lista_cria();
+    
+    
+    <b><span style='color:#fdbc4b;'>for</span></b>(i=<span style='color:#f67400;'>0</span>;i&lt;N;i++){
+        res = insere_ArvAVL(avl,dados[i]);
+    }
+    
+    printf(<span style='color:#f44f4f;'>&quot;</span><span style='color:#3daee9;'>\n</span><span style='color:#f44f4f;'>AVL em ordem:</span><span style='color:#3daee9;'>\n</span><span style='color:#f44f4f;'>&quot;</span>);
+    emOrdem_ArvAVL(avl);
+    printf(<span style='color:#f44f4f;'>&quot;</span><span style='color:#3daee9;'>\n\n</span><span style='color:#f44f4f;'>&quot;</span>);
+    
+    printf(<span style='color:#f44f4f;'>&quot;</span><span style='color:#3daee9;'>\n</span><span style='color:#f44f4f;'>Lista em ordem:</span><span style='color:#3daee9;'>\n</span><span style='color:#f44f4f;'>&quot;</span>);
+    emOrdem_Lista(avl, emOrdem);
+    
+    printf(<span style='color:#f44f4f;'>&quot;%s&quot;</span>,imprime_lista(emOrdem));
+    printf(<span style='color:#f44f4f;'>&quot;</span><span style='color:#3daee9;'>\n\n</span><span style='color:#f44f4f;'>&quot;</span>);
+    
+    libera_ArvAVL(avl);
+    lista_libera(emOrdem);
+    
+    <b><span style='color:#fdbc4b;'>return</span></b> <span style='color:#f67400;'>0</span>;
+}
+
+
+<span style='color:#7a7c7d;'>//Função que gera a lista</span>
+
+<span style='color:#2980b9;'>void</span> emOrdem_Lista(ArvAVL *raiz, Lista* q){
+    
+    <span style='color:#2980b9;'>static</span> <span style='color:#2980b9;'>int</span> contador = <span style='color:#f67400;'>0</span>;
+    
+    <b><span style='color:#fdbc4b;'>if</span></b>(raiz == NULL)
+        <b><span style='color:#fdbc4b;'>return</span></b>;
+    <b><span style='color:#fdbc4b;'>if</span></b>(*raiz != NULL){
+        emOrdem_Lista(&amp;((*raiz)-&gt;esq), q);
+        lista_insere_posicao(q,(*raiz)-&gt;info,contador);
+        contador++;
+        emOrdem_Lista(&amp;((*raiz)-&gt;dir), q);
+    }
+}
+</pre>
+</body>
+</html>

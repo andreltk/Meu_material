@@ -1,0 +1,3 @@
+1000	foto
+7	abc
+5	abcde

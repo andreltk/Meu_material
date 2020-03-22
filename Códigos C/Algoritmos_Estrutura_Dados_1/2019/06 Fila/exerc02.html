@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="Generator" content="Kate, the KDE Advanced Text Editor" />
+<title>exerc02.c</title>
+</head>
+<!-- Highlighting: "C" -->
+<body>
+<pre style='color:#cfcfc2;background-color:#232629;'>
+<span style='color:#27ae60;'>#include </span><span style='color:#27ae60;'>&lt;stdio.h&gt;</span>
+<span style='color:#27ae60;'>#include </span><span style='color:#27ae60;'>&lt;stdlib.h&gt;</span>
+<span style='color:#27ae60;'>#include </span><span style='color:#27ae60;'>&lt;string.h&gt;</span>
+
+<span style='color:#27ae60;'>#define MAX 100</span>
+<span style='color:#27ae60;'>#define INSERE &quot;inserir\0&quot;</span>
+<span style='color:#27ae60;'>#define REMOVE &quot;remover\0&quot;</span>
+<span style='color:#27ae60;'>#define CONSULTA &quot;consultar\0&quot;</span>
+<span style='color:#27ae60;'>#define FINALIZA &quot;finalizar\0&quot;</span>
+
+
+<b>typedef</b> <b>struct</b> fila Fila;
+
+<b>struct</b> fila {
+    <span style='color:#2980b9;'>int</span> tamanho, inicio, final;
+    <span style='color:#2980b9;'>int</span> maxTamanho;
+    <span style='color:#2980b9;'>char</span> ** elementos;
+};
+
+
+Fila * fila_cria (<span style='color:#2980b9;'>int</span> maxTamanho);
+
+Fila * fila_copia (Fila * p);
+
+<span style='color:#2980b9;'>void</span> fila_libera (Fila * p);
+
+<span style='color:#2980b9;'>int</span> fila_insere (Fila * p, <span style='color:#2980b9;'>char</span> * elemento);
+
+<span style='color:#2980b9;'>char</span> * fila_remove (Fila * p);
+
+<span style='color:#2980b9;'>char</span> * fila_obtem_primeiro  (Fila * p);
+
+<span style='color:#2980b9;'>int</span> fila_obtem_tamanho  (Fila * p);
+
+<span style='color:#2980b9;'>int</span> fila_se_vazia (Fila * p);
+
+<span style='color:#2980b9;'>int</span> fila_se_cheia (Fila * p);
+
+<span style='color:#2980b9;'>char</span> * fila_imprime  (Fila * p);
+<span style='color:#7a7c7d;'>///////////////////////////////////////////////////////////</span>
+<span style='color:#7a7c7d;'>///////////////////////////////////////////////////////////</span>
+
+<span style='color:#2980b9;'>int</span> main(){
+    
+    Fila * inss;
+    <span style='color:#2980b9;'>char</span> opcao[MAX], parametro[MAX], auxiliar[MAX];
+    <span style='color:#2980b9;'>int</span> contador, chave;
+    
+    inss = fila_cria(MAX);
+    
+    <b><span style='color:#fdbc4b;'>do</span></b>{
+        
+        scanf(<span style='color:#f44f4f;'>&quot;</span><span style='color:#3daee9;'>\n</span><span style='color:#f44f4f;'> %s&quot;</span>,opcao);
+        
+        <b><span style='color:#fdbc4b;'>if</span></b>(strcmp(opcao,INSERE) == <span style='color:#f67400;'>0</span>){
+            scanf(<span style='color:#f44f4f;'>&quot;</span><span style='color:#3daee9;'>\n</span><span style='color:#f44f4f;'> %s&quot;</span>,parametro);
+            fila_insere(inss, parametro);
+            
+            <b><span style='color:#fdbc4b;'>continue</span></b>;
+        }
+        
+        
+        <b><span style='color:#fdbc4b;'>if</span></b>(strcmp(opcao,REMOVE) == <span style='color:#f67400;'>0</span>){
+            
+            scanf(<span style='color:#f44f4f;'>&quot;</span><span style='color:#3daee9;'>\n</span><span style='color:#f44f4f;'> %s&quot;</span>,parametro);
+            chave = <span style='color:#f67400;'>0</span>;
+            
+            <b><span style='color:#fdbc4b;'>for</span></b>(contador = fila_obtem_tamanho(inss); contador &gt; <span style='color:#f67400;'>0</span>; contador--){
+                
+                strcpy(auxiliar, fila_remove(inss));
+                
+                <b><span style='color:#fdbc4b;'>if</span></b>(strcmp(auxiliar, parametro) == <span style='color:#f67400;'>0</span>){
+                    chave = <span style='color:#f67400;'>1</span>;
+                    <b><span style='color:#fdbc4b;'>continue</span></b>;
+                }
+                fila_insere(inss, auxiliar);
+            }
+            
+            <b><span style='color:#fdbc4b;'>if</span></b>(chave == <span style='color:#f67400;'>1</span>){
+                fila_insere(inss, parametro);
+            }
+        }
+        
+        
+        <b><span style='color:#fdbc4b;'>if</span></b>(strcmp(opcao,CONSULTA) == <span style='color:#f67400;'>0</span>){
+            printf(<span style='color:#f44f4f;'>&quot;%s</span><span style='color:#3daee9;'>\n</span><span style='color:#f44f4f;'>&quot;</span>,fila_imprime(inss));            
+            <b><span style='color:#fdbc4b;'>continue</span></b>;
+            
+        }
+        
+    }while(strcmp(opcao,FINALIZA) != <span style='color:#f67400;'>0</span>);
+    
+    fila_libera(inss);
+    
+}
+
+
+
+
+<span style='color:#7a7c7d;'>///////////////////////////////////////////////////////////</span>
+<span style='color:#7a7c7d;'>///////////////////////////////////////////////////////////</span>
+Fila * fila_cria (<span style='color:#2980b9;'>int</span> maxTamanho) {
+    Fila * q = (Fila *) malloc(<b>sizeof</b>(Fila));
+    <b><span style='color:#fdbc4b;'>if</span></b> (q!=NULL) {
+        q-&gt;tamanho = <span style='color:#f67400;'>0</span>;
+        q-&gt;inicio  = <span style='color:#f67400;'>0</span>;
+        q-&gt;final   = <span style='color:#f67400;'>0</span>;
+        q-&gt;maxTamanho = maxTamanho;
+        q-&gt;elementos = (<span style='color:#2980b9;'>char</span> **) malloc(<b>sizeof</b>(<span style='color:#2980b9;'>char</span> *) * maxTamanho);
+    }
+    <b><span style='color:#fdbc4b;'>return</span></b> q;
+}
+Fila * fila_copia (Fila * p) {
+    <b><span style='color:#fdbc4b;'>return</span></b> NULL;
+}
+<span style='color:#2980b9;'>void</span> fila_libera (Fila * p) {
+    
+    <span style='color:#2980b9;'>int</span> contador;
+    
+    <b><span style='color:#fdbc4b;'>for</span></b>(contador = <span style='color:#f67400;'>0</span>;contador &lt; fila_obtem_tamanho(p); contador++){
+        
+        free(p-&gt;elementos[contador]);
+        p-&gt;elementos[contador] = NULL;
+        
+    }
+    
+    free(p-&gt;elementos);
+    p-&gt;elementos = NULL;
+    free(p);
+    p = NULL;
+    
+    <b><span style='color:#fdbc4b;'>return</span></b>;
+    
+}
+<span style='color:#2980b9;'>int</span> fila_insere (Fila * p, <span style='color:#2980b9;'>char</span> * elemento) {
+    
+    <span style='color:#2980b9;'>int</span> final;
+    <span style='color:#2980b9;'>char</span> * auxiliar;
+    
+    final = p-&gt;final;
+    
+    <b><span style='color:#fdbc4b;'>if</span></b>(p == NULL){
+        <b><span style='color:#fdbc4b;'>return</span></b> -<span style='color:#f67400;'>1</span>;
+    }
+    <b><span style='color:#fdbc4b;'>else</span></b>{
+        
+        auxiliar = (<span style='color:#2980b9;'>char</span> *)malloc(<b>sizeof</b>(<span style='color:#2980b9;'>char</span>) * strlen(elemento) + <span style='color:#f67400;'>1</span>);
+        
+        strcpy(auxiliar, elemento);
+        
+        p-&gt;elementos[final] = auxiliar;
+        p-&gt;tamanho++;
+        p-&gt;final = (final + <span style='color:#f67400;'>1</span> ) % p-&gt;maxTamanho;
+        
+        <b><span style='color:#fdbc4b;'>return</span></b> <span style='color:#f67400;'>1</span>;
+    }
+}
+<span style='color:#2980b9;'>char</span> * fila_remove (Fila * p) {
+    
+    <span style='color:#2980b9;'>int</span> inicio;
+    <span style='color:#2980b9;'>char</span> * auxiliar;
+    
+    <b><span style='color:#fdbc4b;'>if</span></b>(fila_se_vazia(p) == <span style='color:#f67400;'>1</span> || p == NULL){
+        <b><span style='color:#fdbc4b;'>return</span></b> NULL;
+    }
+    
+    <b><span style='color:#fdbc4b;'>else</span></b>{
+        
+        inicio = p-&gt;inicio;
+        auxiliar = (<span style='color:#2980b9;'>char</span> *)malloc(<b>sizeof</b>(<span style='color:#2980b9;'>char</span>) * strlen(p-&gt;elementos[inicio]));
+        
+        strcpy(auxiliar, p-&gt;elementos[inicio]);
+        
+        free(p-&gt;elementos[inicio]);
+        
+        p-&gt;elementos[inicio] = NULL;
+        p-&gt;tamanho--;
+        p-&gt;inicio = (inicio + <span style='color:#f67400;'>1</span>) % p-&gt;maxTamanho;
+        
+        <b><span style='color:#fdbc4b;'>return</span></b> auxiliar;
+    }
+}
+<span style='color:#2980b9;'>char</span> * fila_obtem_primeiro  (Fila * p) {
+    
+    <span style='color:#2980b9;'>int</span> inicio;
+    <span style='color:#2980b9;'>char</span> * auxiliar;
+    
+    inicio = p-&gt;inicio;
+    
+    <b><span style='color:#fdbc4b;'>if</span></b>(fila_se_vazia(p) == <span style='color:#f67400;'>1</span> || p == NULL){
+        <b><span style='color:#fdbc4b;'>return</span></b> NULL;
+    }
+    <b><span style='color:#fdbc4b;'>else</span></b>{
+        
+        auxiliar = (<span style='color:#2980b9;'>char</span> *)malloc(<b>sizeof</b>(<span style='color:#2980b9;'>char</span>) * strlen(p-&gt;elementos[inicio]) + <span style='color:#f67400;'>1</span>);
+        
+        strcpy(auxiliar, p-&gt;elementos[inicio]);
+        
+        <b><span style='color:#fdbc4b;'>return</span></b> auxiliar;
+    }
+}
+<span style='color:#2980b9;'>int</span> fila_obtem_tamanho  (Fila * p) {
+    
+    <b><span style='color:#fdbc4b;'>if</span></b>(p == NULL){
+        <b><span style='color:#fdbc4b;'>return</span></b> -<span style='color:#f67400;'>1</span>;
+    }
+    
+    <b><span style='color:#fdbc4b;'>else</span></b>{
+        <b><span style='color:#fdbc4b;'>return</span></b> p-&gt;tamanho;
+    }
+    
+}
+<span style='color:#2980b9;'>int</span> fila_se_vazia (Fila * p) {
+    
+    <b><span style='color:#fdbc4b;'>if</span></b>(p == NULL){
+        <b><span style='color:#fdbc4b;'>return</span></b> -<span style='color:#f67400;'>1</span>;
+    }
+    
+    <b><span style='color:#fdbc4b;'>if</span></b>(p-&gt;tamanho == <span style='color:#f67400;'>0</span>){
+        <b><span style='color:#fdbc4b;'>return</span></b> <span style='color:#f67400;'>1</span>;
+    }
+    <b><span style='color:#fdbc4b;'>else</span></b>{
+        <b><span style='color:#fdbc4b;'>return</span></b> <span style='color:#f67400;'>0</span>;
+    }
+}
+<span style='color:#2980b9;'>int</span> fila_se_cheia (Fila * p) {
+    
+    <b><span style='color:#fdbc4b;'>if</span></b>(p == NULL){
+        <b><span style='color:#fdbc4b;'>return</span></b> -<span style='color:#f67400;'>1</span>;
+    }
+    
+    <b><span style='color:#fdbc4b;'>if</span></b>(p-&gt;tamanho == p-&gt;maxTamanho){
+        <b><span style='color:#fdbc4b;'>return</span></b> <span style='color:#f67400;'>1</span>;
+    }
+    <b><span style='color:#fdbc4b;'>else</span></b>{
+        <b><span style='color:#fdbc4b;'>return</span></b> <span style='color:#f67400;'>0</span>;
+    }
+}
+<span style='color:#2980b9;'>char</span> * fila_imprime  (Fila * p) {
+    
+    <span style='color:#2980b9;'>char</span> * retorno = (<span style='color:#2980b9;'>char</span> *) malloc(<b>sizeof</b>(<span style='color:#2980b9;'>char</span>)*MAX*p-&gt;maxTamanho);
+    retorno [<span style='color:#f67400;'>0</span>] = <span style='color:#3daee9;'>'\0'</span>;
+    <span style='color:#2980b9;'>int</span> i;
+    <b><span style='color:#fdbc4b;'>for</span></b> (i = p-&gt;tamanho; i&gt;<span style='color:#f67400;'>0</span>; i--) {
+        <span style='color:#2980b9;'>char</span> * aux = fila_remove(p);
+        fila_insere(p, aux);
+        strcat(retorno, aux);
+        strcat(retorno, <span style='color:#f44f4f;'>&quot; &quot;</span>);
+    }
+    retorno = realloc(retorno, strlen(retorno)+<span style='color:#f67400;'>1</span>);
+    <b><span style='color:#fdbc4b;'>return</span></b> retorno;
+    
+    
+}
+</pre>
+</body>
+</html>

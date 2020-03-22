@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="Generator" content="Kate, the KDE Advanced Text Editor" />
+<title>ene.c</title>
+</head>
+<!-- Highlighting: "C" -->
+<body>
+<pre style='color:#cfcfc2;background-color:#232629;'>
+<span style='color:#2980b9;'>int</span> filho_unico(ArvAVL *raiz){
+    
+    <span style='color:#2980b9;'>static</span> <span style='color:#2980b9;'>int</span> quantidade = <span style='color:#f67400;'>0</span>;
+    <span style='color:#2980b9;'>int</span> filho_d, filho_e;
+    <b><span style='color:#fdbc4b;'>if</span></b>(raiz == NULL)
+        <b><span style='color:#fdbc4b;'>return</span></b> <span style='color:#f67400;'>0</span>;
+    <b><span style='color:#fdbc4b;'>if</span></b>(*raiz != NULL){
+        
+        filho_d = <span style='color:#f67400;'>0</span>;
+        filho_e = <span style='color:#f67400;'>0</span>;
+        
+        <b><span style='color:#fdbc4b;'>if</span></b>(((*raiz)-&gt;esq) == NULL){
+            filho_e = <span style='color:#f67400;'>1</span>   
+        }
+        
+        <b><span style='color:#fdbc4b;'>if</span></b>(((*raiz)-&gt;dir) == NULL){
+            filho_d = <span style='color:#f67400;'>1</span>;
+        }
+        
+        <b><span style='color:#fdbc4b;'>if</span></b>((filho_d + filho_e) == <span style='color:#f67400;'>1</span>){
+            quantidade++;
+        };
+        
+        filho_unico(&amp;((*raiz)-&gt;esq));
+        filho_unico(&amp;((*raiz)-&gt;dir));
+        
+        <b><span style='color:#fdbc4b;'>return</span></b> quantidade;
+    }
+}
+</pre>
+</body>
+</html>

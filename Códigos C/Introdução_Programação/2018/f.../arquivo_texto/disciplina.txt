@@ -1,0 +1,7 @@
+Algoritmo	128	500.12
+Matematica	64	600.00
+Etica	32	325.15
+Insconstitucional	3983	198657.45
+Calculo	96	659.54
+Geografia	80	698.00
+calculo	96	255.90

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="Generator" content="Kate, the KDE Advanced Text Editor" />
+<title>main.c</title>
+</head>
+<!-- Highlighting: "C" -->
+<body>
+<pre style='color:#cfcfc2;background-color:#232629;'>
+<span style='color:#27ae60;'>#include </span><span style='color:#27ae60;'>&lt;stdio.h&gt;</span>
+<span style='color:#27ae60;'>#include </span><span style='color:#27ae60;'>&lt;stdlib.h&gt;</span>
+<span style='color:#27ae60;'>#include </span><span style='color:#27ae60;'>&quot;ArvoreAVL.h&quot;</span>
+
+<span style='color:#2980b9;'>int</span> main(){
+    ArvAVL* avl;
+    <span style='color:#2980b9;'>int</span> * lim_inf, * lim_sup;
+    <span style='color:#2980b9;'>int</span> res, i, valor, resultado;
+    <span style='color:#2980b9;'>int</span> N = <span style='color:#f67400;'>4</span>, dados[<span style='color:#f67400;'>4</span>] = {<span style='color:#f67400;'>2</span>,<span style='color:#f67400;'>300</span>,-<span style='color:#f67400;'>5</span>,<span style='color:#f67400;'>3</span>};
+    
+    avl = cria_ArvAVL();
+    
+    <b><span style='color:#fdbc4b;'>for</span></b>(i=<span style='color:#f67400;'>0</span>;i&lt;N;i++){
+        res = insere_ArvAVL(avl,dados[i]);
+        
+    }  
+    
+    lim_inf = (<span style='color:#2980b9;'>int</span> *)malloc(<b>sizeof</b>(<span style='color:#2980b9;'>int</span>));
+    lim_sup = (<span style='color:#2980b9;'>int</span> *)malloc(<b>sizeof</b>(<span style='color:#2980b9;'>int</span>));
+    
+    scanf(<span style='color:#f44f4f;'>&quot;%d&quot;</span>,&amp;valor);
+    
+    resultado = consultaIntervalarAVL(avl,valor,lim_inf, lim_sup); 
+
+    <b><span style='color:#fdbc4b;'>if</span></b>(resultado == <span style='color:#f67400;'>1</span>){
+        printf(<span style='color:#f44f4f;'>&quot;O valor de %d encontra-se na AVL.</span><span style='color:#3daee9;'>\n</span><span style='color:#f44f4f;'>&quot;</span>,valor);
+    }
+    <b><span style='color:#fdbc4b;'>else</span></b> <b><span style='color:#fdbc4b;'>if</span></b>(resultado == <span style='color:#f67400;'>2</span>){
+        printf(<span style='color:#f44f4f;'>&quot;Limite superior de %d encontrado na AVL: %d.</span><span style='color:#3daee9;'>\n</span><span style='color:#f44f4f;'>&quot;</span>,valor,*lim_sup);
+    }
+    <b><span style='color:#fdbc4b;'>else</span></b> <b><span style='color:#fdbc4b;'>if</span></b>(resultado == <span style='color:#f67400;'>3</span>){
+        printf(<span style='color:#f44f4f;'>&quot;Limite inferior de %d encontrado na AVL: %d.</span><span style='color:#3daee9;'>\n</span><span style='color:#f44f4f;'>&quot;</span>,valor,*lim_inf);
+    }
+    <b><span style='color:#fdbc4b;'>else</span></b> <b><span style='color:#fdbc4b;'>if</span></b>(resultado == <span style='color:#f67400;'>5</span>){
+        printf(<span style='color:#f44f4f;'>&quot;Limite superior de %d encontrado na AVL: %d.</span><span style='color:#3daee9;'>\n</span><span style='color:#f44f4f;'>&quot;</span>,valor,*lim_sup);
+        printf(<span style='color:#f44f4f;'>&quot;Limite inferior de %d encontrado na AVL: %d.</span><span style='color:#3daee9;'>\n</span><span style='color:#f44f4f;'>&quot;</span>,valor,*lim_inf);        
+    }
+    
+    libera_ArvAVL(avl);
+    free(lim_inf);
+    lim_inf = NULL;
+    free(lim_sup);
+    lim_sup = NULL;
+    
+    <b><span style='color:#fdbc4b;'>return</span></b> <span style='color:#f67400;'>0</span>;
+}
+
+<span style='color:#7a7c7d;'>//Código da função</span>
+
+<span style='color:#2980b9;'>int</span> consultaIntervalarAVL(ArvAVL *raiz, <span style='color:#2980b9;'>int</span> x, <span style='color:#2980b9;'>int</span> *limInf, <span style='color:#2980b9;'>int</span> *limSup){
+    
+    <span style='color:#2980b9;'>int</span> resultado, contador;
+    
+    resultado = consulta_ArvAVL(raiz, x);
+    
+    <b><span style='color:#fdbc4b;'>if</span></b>(resultado == <span style='color:#f67400;'>1</span>){
+        <b><span style='color:#fdbc4b;'>return</span></b> resultado;
+    }
+    <b><span style='color:#fdbc4b;'>else</span></b>{
+        
+        *limInf = *limSup = <span style='color:#f67400;'>0</span>;
+        
+        <b><span style='color:#fdbc4b;'>for</span></b>(contador = x + <span style='color:#f67400;'>1</span>;contador &lt; x * <span style='color:#f67400;'>100</span>; contador++){
+            <span style='color:#7a7c7d;'>//busca o limite superior</span>
+            <b><span style='color:#fdbc4b;'>if</span></b>(consulta_ArvAVL(raiz,contador) == <span style='color:#f67400;'>1</span>){
+                *limSup = contador;
+                resultado += <span style='color:#f67400;'>2</span>;
+                <b><span style='color:#fdbc4b;'>break</span></b>;
+            }
+        }
+        
+        <b><span style='color:#fdbc4b;'>for</span></b>(contador = x - <span style='color:#f67400;'>1</span>;contador &gt; x * (-<span style='color:#f67400;'>100</span>); contador--){
+            <span style='color:#7a7c7d;'>//busca o limite superior</span>
+            <b><span style='color:#fdbc4b;'>if</span></b>(consulta_ArvAVL(raiz,contador) == <span style='color:#f67400;'>1</span>){
+                *limInf = contador;
+                resultado += <span style='color:#f67400;'>3</span>;
+                <b><span style='color:#fdbc4b;'>break</span></b>;
+            }
+        }
+    }
+    <b><span style='color:#fdbc4b;'>return</span></b> resultado;
+}
+</pre>
+</body>
+</html>

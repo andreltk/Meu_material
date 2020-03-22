@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="Generator" content="Kate, the KDE Advanced Text Editor" />
+<title>exerc01.c</title>
+</head>
+<!-- Highlighting: "C" -->
+<body>
+<pre style='color:#cfcfc2;background-color:#232629;'>
+<span style='color:#27ae60;'>#include </span><span style='color:#27ae60;'>&lt;stdio.h&gt;</span>
+<span style='color:#27ae60;'>#include </span><span style='color:#27ae60;'>&lt;stdlib.h&gt;</span>
+<span style='color:#27ae60;'>#include </span><span style='color:#27ae60;'>&lt;string.h&gt;</span>
+
+<span style='color:#27ae60;'>#define MAX 50</span>
+<span style='color:#27ae60;'>#define PA &quot;feha_parenteses\0&quot;</span>
+<span style='color:#27ae60;'>#define CC &quot;fecha_colchetes\0&quot;</span>
+<span style='color:#27ae60;'>#define CH &quot;fecha_chaves\0&quot;</span>
+
+
+<b>struct</b> pilha {
+    <span style='color:#2980b9;'>int</span> tamanho;
+    <span style='color:#2980b9;'>int</span> maxTamanho;
+    <span style='color:#2980b9;'>char</span> ** elementos;
+};
+
+<b>typedef</b> <b>struct</b> pilha Pilha;
+
+Pilha * pilha_cria (<span style='color:#2980b9;'>int</span> maxTamanho);
+Pilha * pilha_copia (Pilha * p);
+<span style='color:#2980b9;'>void</span> pilha_libera (Pilha * p);
+<span style='color:#2980b9;'>int</span> pilha_insere (Pilha * p, <span style='color:#2980b9;'>char</span> * elemento); <span style='color:#7a7c7d;'>// push</span>
+<span style='color:#2980b9;'>char</span> * pilha_remove (Pilha * p); <span style='color:#7a7c7d;'>// pop</span>
+<span style='color:#2980b9;'>char</span> * pilha_obtem_topo  (Pilha * p); <span style='color:#7a7c7d;'>// top</span>
+<span style='color:#2980b9;'>int</span> pilha_obtem_tamanho  (Pilha * p);
+<span style='color:#2980b9;'>int</span> pilha_se_vazia (Pilha * p);
+<span style='color:#2980b9;'>int</span> pilha_se_cheia (Pilha * p);
+<span style='color:#2980b9;'>char</span> * pilha_imprime  (Pilha * p);
+
+<span style='color:#7a7c7d;'>/////////////////////////////////////////////////////////////////////////////////</span>
+
+<span style='color:#7a7c7d;'>/////////////////////////////////////////////////////////////////////////////////</span>
+<span style='color:#2980b9;'>int</span> main(){
+    
+    Pilha * principal;
+    <span style='color:#2980b9;'>char</span> expressao[MAX], caractere;
+    <span style='color:#2980b9;'>int</span> contador;
+    
+    principal = pilha_cria(MAX);
+    
+    scanf(<span style='color:#f44f4f;'>&quot;%[^</span><span style='color:#3daee9;'>\n</span><span style='color:#f44f4f;'>]s&quot;</span>,expressao);
+    
+    <b><span style='color:#fdbc4b;'>for</span></b>(contador = <span style='color:#f67400;'>0</span>; contador &lt; strlen(expressao); contador++){
+        
+        caractere = expressao[contador];
+        
+        
+        <b><span style='color:#fdbc4b;'>if</span></b>(caractere == <span style='color:#3daee9;'>'('</span>){
+            pilha_insere(principal, PA);
+        }
+        <b><span style='color:#fdbc4b;'>else</span></b> <b><span style='color:#fdbc4b;'>if</span></b>(caractere == <span style='color:#3daee9;'>'['</span>){
+            pilha_insere(principal, CC);
+        }
+        <b><span style='color:#fdbc4b;'>else</span></b> <b><span style='color:#fdbc4b;'>if</span></b>(caractere == <span style='color:#3daee9;'>'{'</span>){
+            pilha_insere(principal, CH);
+        }
+
+        <span style='color:#7a7c7d;'>////////////////////////////////////</span>
+        <b><span style='color:#fdbc4b;'>else</span></b> <b><span style='color:#fdbc4b;'>if</span></b>(caractere == <span style='color:#3daee9;'>')'</span>){
+
+            <b><span style='color:#fdbc4b;'>if</span></b>(pilha_se_vazia(principal) == <span style='color:#f67400;'>1</span>){
+            <span style='color:#7a7c7d;'>//    printf(&quot;Inconsistente\n&quot;);</span>
+                pilha_insere(principal, <span style='color:#f44f4f;'>&quot;Erro</span><span style='color:#3daee9;'>\0</span><span style='color:#f44f4f;'>&quot;</span>);
+            }
+
+            <b><span style='color:#fdbc4b;'>if</span></b>(strcmp(pilha_obtem_topo(principal), PA) == <span style='color:#f67400;'>0</span>){
+                 pilha_remove(principal);
+            }
+        }
+        <b><span style='color:#fdbc4b;'>else</span></b> <b><span style='color:#fdbc4b;'>if</span></b>(caractere == <span style='color:#3daee9;'>']'</span>){
+        
+            <b><span style='color:#fdbc4b;'>if</span></b>(pilha_se_vazia(principal) == <span style='color:#f67400;'>1</span>){
+            <span style='color:#7a7c7d;'>//    pilha_insere(principal, &quot;Erro\0&quot;);  </span>
+                printf(<span style='color:#f44f4f;'>&quot;Inconsistente</span><span style='color:#3daee9;'>\n</span><span style='color:#f44f4f;'>&quot;</span>);
+            }
+
+            <b><span style='color:#fdbc4b;'>if</span></b>(strcmp(pilha_obtem_topo(principal), CC) == <span style='color:#f67400;'>0</span>){
+                pilha_remove(principal);
+            }
+        }
+        <b><span style='color:#fdbc4b;'>else</span></b> <b><span style='color:#fdbc4b;'>if</span></b>(caractere == <span style='color:#3daee9;'>'}'</span>){
+            
+            <b><span style='color:#fdbc4b;'>if</span></b>(pilha_se_vazia(principal) == <span style='color:#f67400;'>1</span>){
+            <span style='color:#7a7c7d;'>//    printf(&quot;Inconsistente\n&quot;);</span>
+                pilha_insere(principal, <span style='color:#f44f4f;'>&quot;Erro</span><span style='color:#3daee9;'>\0</span><span style='color:#f44f4f;'>&quot;</span>);
+            }
+
+            <b><span style='color:#fdbc4b;'>else</span></b> <b><span style='color:#fdbc4b;'>if</span></b>(strcmp(pilha_obtem_topo(principal), CH) == <span style='color:#f67400;'>0</span>){
+                pilha_remove(principal);
+            }
+        }
+    } 
+    
+    <b><span style='color:#fdbc4b;'>if</span></b>(pilha_se_vazia(principal) == <span style='color:#f67400;'>1</span>){
+        
+        printf(<span style='color:#f44f4f;'>&quot;sim</span><span style='color:#3daee9;'>\n</span><span style='color:#f44f4f;'>&quot;</span>);
+    }
+    <b><span style='color:#fdbc4b;'>else</span></b>{
+        printf(<span style='color:#f44f4f;'>&quot;não</span><span style='color:#3daee9;'>\n</span><span style='color:#f44f4f;'>&quot;</span>);
+    }
+    
+    <b><span style='color:#fdbc4b;'>return</span></b> <span style='color:#f67400;'>0</span>;
+    
+    
+}
+
+<span style='color:#7a7c7d;'>/////////////////////////////////////////////////////////////////////////////////</span>
+
+<span style='color:#7a7c7d;'>/////////////////////////////////////////////////////////////////////////////////</span>
+
+Pilha * pilha_cria (<span style='color:#2980b9;'>int</span> maxTamanho) {
+    Pilha * q = (Pilha *) malloc(<b>sizeof</b>(Pilha));
+    <b><span style='color:#fdbc4b;'>if</span></b> (q!=NULL) {
+        q-&gt;tamanho = <span style='color:#f67400;'>0</span>;
+        q-&gt;maxTamanho = maxTamanho;
+        q-&gt;elementos = (<span style='color:#2980b9;'>char</span> **) malloc(<b>sizeof</b>(<span style='color:#2980b9;'>char</span> *) * maxTamanho);
+    }
+    <b><span style='color:#fdbc4b;'>return</span></b> q;
+}
+Pilha * pilha_copia (Pilha * p) {
+    <b><span style='color:#fdbc4b;'>return</span></b> NULL;
+}
+
+<span style='color:#2980b9;'>void</span> pilha_libera (Pilha * p) {
+    
+}
+<span style='color:#2980b9;'>int</span> pilha_insere (Pilha * p, <span style='color:#2980b9;'>char</span> * elemento) {
+    
+    <span style='color:#2980b9;'>char</span> * auxiliar;
+    <span style='color:#2980b9;'>int</span> tamanho;
+    
+    <b><span style='color:#fdbc4b;'>if</span></b>(pilha_se_cheia(p) == <span style='color:#f67400;'>1</span> || p == NULL){
+        <b><span style='color:#fdbc4b;'>return</span></b> -<span style='color:#f67400;'>1</span>;
+    }	
+    
+    
+    tamanho = pilha_obtem_tamanho(p);
+    auxiliar = (<span style='color:#2980b9;'>char</span> *)malloc(<b>sizeof</b>(<span style='color:#2980b9;'>char</span>) * strlen(elemento));
+    
+    strcpy(auxiliar, elemento);
+    
+    ;
+    p-&gt;elementos[tamanho] = auxiliar;
+    p-&gt;tamanho++;
+    
+    <b><span style='color:#fdbc4b;'>return</span></b> <span style='color:#f67400;'>1</span>;
+}
+<span style='color:#2980b9;'>char</span> * pilha_remove (Pilha * p) {
+    
+    <span style='color:#2980b9;'>char</span> * auxiliar;
+    <span style='color:#2980b9;'>int</span> tamanho;
+    
+    <b><span style='color:#fdbc4b;'>if</span></b>(pilha_se_vazia(p) == <span style='color:#f67400;'>1</span> || p == NULL){
+        <b><span style='color:#fdbc4b;'>return</span></b> <span style='color:#f44f4f;'>&quot;NULL&quot;</span>;
+    }	
+    
+    tamanho = pilha_obtem_tamanho(p);
+    auxiliar = (<span style='color:#2980b9;'>char</span> *)malloc(<b>sizeof</b>(<span style='color:#2980b9;'>char</span>) * strlen(p-&gt;elementos[tamanho - <span style='color:#f67400;'>1</span>]));
+    
+    strcpy(auxiliar, p-&gt;elementos[tamanho - <span style='color:#f67400;'>1</span>]);
+    
+    p-&gt;tamanho--;
+    free(p-&gt;elementos[tamanho]);
+    p-&gt;elementos[tamanho] = NULL;
+    
+    <b><span style='color:#fdbc4b;'>return</span></b> auxiliar;
+}
+<span style='color:#2980b9;'>char</span> * pilha_obtem_topo  (Pilha * p) {
+    
+    <span style='color:#2980b9;'>char</span> * auxiliar;
+    <span style='color:#2980b9;'>int</span> tamanho;
+    
+    <b><span style='color:#fdbc4b;'>if</span></b>(pilha_se_vazia(p) == <span style='color:#f67400;'>1</span> || p == NULL){
+
+        <b><span style='color:#fdbc4b;'>return</span></b> <span style='color:#f44f4f;'>&quot;NULL&quot;</span>;
+    }	
+    
+    
+    tamanho = pilha_obtem_tamanho(p);
+    auxiliar = (<span style='color:#2980b9;'>char</span> *)malloc(<b>sizeof</b>(<span style='color:#2980b9;'>char</span>) * strlen(p-&gt;elementos[tamanho - <span style='color:#f67400;'>1</span>]));
+    
+    strcpy(auxiliar, p-&gt;elementos[tamanho - <span style='color:#f67400;'>1</span>]);
+    
+    <b><span style='color:#fdbc4b;'>return</span></b> auxiliar;
+}
+<span style='color:#2980b9;'>int</span> pilha_obtem_tamanho  (Pilha * p) {
+    
+    <b><span style='color:#fdbc4b;'>if</span></b>(p == NULL){
+        <b><span style='color:#fdbc4b;'>return</span></b> -<span style='color:#f67400;'>1</span>;
+    }	
+    
+    <b><span style='color:#fdbc4b;'>return</span></b> p-&gt;tamanho;
+    
+}
+<span style='color:#2980b9;'>int</span> pilha_se_vazia (Pilha * p) {
+    
+    <b><span style='color:#fdbc4b;'>if</span></b>(p == NULL){
+        <b><span style='color:#fdbc4b;'>return</span></b> -<span style='color:#f67400;'>1</span>;
+    }	
+    <b><span style='color:#fdbc4b;'>if</span></b>(p-&gt;tamanho == <span style='color:#f67400;'>0</span>){
+        <b><span style='color:#fdbc4b;'>return</span></b> <span style='color:#f67400;'>1</span>;
+    }
+    <b><span style='color:#fdbc4b;'>else</span></b>{
+        <b><span style='color:#fdbc4b;'>return</span></b> <span style='color:#f67400;'>0</span>;
+    }
+}
+<span style='color:#2980b9;'>int</span> pilha_se_cheia (Pilha * p) {
+    
+    <b><span style='color:#fdbc4b;'>if</span></b>(p == NULL){
+        <b><span style='color:#fdbc4b;'>return</span></b> -<span style='color:#f67400;'>1</span>;
+    }	
+    
+    <b><span style='color:#fdbc4b;'>if</span></b>(p-&gt;tamanho == p-&gt;maxTamanho){
+        <b><span style='color:#fdbc4b;'>return</span></b> <span style='color:#f67400;'>1</span>;
+    }
+    <b><span style='color:#fdbc4b;'>else</span></b>{
+        <b><span style='color:#fdbc4b;'>return</span></b> <span style='color:#f67400;'>0</span>;
+    }
+}
+<span style='color:#2980b9;'>char</span> * pilha_imprime  (Pilha * p) {
+    <span style='color:#2980b9;'>char</span> * aux = (<span style='color:#2980b9;'>char</span> *) malloc(<b>sizeof</b>(<span style='color:#2980b9;'>char</span>)*<span style='color:#f67400;'>10</span>*p-&gt;maxTamanho);
+    aux [<span style='color:#f67400;'>0</span>] = <span style='color:#3daee9;'>'\0'</span>;
+    <span style='color:#2980b9;'>int</span> i;
+    <b><span style='color:#fdbc4b;'>for</span></b> (i=p-&gt;tamanho-<span style='color:#f67400;'>1</span>; i&gt;=<span style='color:#f67400;'>0</span>; i--) {
+        strcat(aux, p-&gt;elementos[i]);
+        strcat(aux, <span style='color:#f44f4f;'>&quot; &quot;</span>);
+    }
+    aux = realloc(aux, strlen(aux)+<span style='color:#f67400;'>1</span>);
+    <b><span style='color:#fdbc4b;'>return</span></b> aux;
+}
+
+</pre>
+</body>
+</html>
