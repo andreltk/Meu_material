@@ -61,4 +61,12 @@ Adicione sua chave, lembrando que caso você criou com um nome ou local diferent
 ```
     $ ssh-add ~/.ssh/id_rsa
 ```
-Agora, basta adiciona-la a sua conta no GitHub
+Agora, basta adiciona-la a sua conta no GitHub nas configurações!
+
+feito isso, basta enviar o projeto com os comandos fornecidos
+
+```
+git remote add origin https://github.com/andreltk/meu_repo.git
+git push -u origin master
+```
+
