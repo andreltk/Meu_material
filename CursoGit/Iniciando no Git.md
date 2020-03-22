@@ -89,4 +89,9 @@ Este comando faz exatamente a mesma coisa que o anterior, mas o diretório de de
 
 # Enviando as mudanças ao repositório
 
-Após as devidas alterações, é interessante salvar e enviar o que foi modificado no seu projeto. Lembre-se que cada arquivo no seu diretório pode estar em dois estados: _tracked_ onde os arquivos estão presentes no ultímo _snapshot_ e podem ser modificadas, restauradas ou preparadas (_staged_), ou então _untracked_ quando não estão nem em nenhum _snapshot_ anterior ou 
+Após as devidas alterações, é interessante salvar e enviar o que foi modificado no seu projeto. Lembre-se que cada arquivo no seu diretório pode estar em dois estados: _tracked_ onde os arquivos estão presentes no ultímo _snapshot_ e podem ser modificadas, restauradas ou preparadas (_staged_), ou então _untracked_ quando não estão nem em nenhum _snapshot_ anterior e também não estão na preparação.
+
+Há um ciclo, onde quando você adiciona arquivos, o Git os considera modificados, quando você os preparas e realiza o _commit_, eles voltam ao estado de não modificados, repetindo novamente o ciclo
+
+![Ciclo dos arquivos](https://git-scm.com/book/en/v2/images/lifecycle.png "O ciclo de vida dos arquivos")
+
