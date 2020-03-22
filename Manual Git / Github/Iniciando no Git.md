@@ -1,8 +1,8 @@
- # Mini manual GitHub
+ # Começando um repositório
 
 **Esse manual tem como objetivo orientar a criação de um repositório no GitHub desde a criação de uma pasta para projeto, até o carregamento do mesmo para o GitHub**
 
-###### Observação: Será usado o Ambiente Linux (Fedora 31) nos exemplos
+###### Observação: Será usado o Ambiente Linux nos exemplos
 
  Para iniciar, será tomado 3 formas distintas:
 + Começando do zero e subindo para o GitHub
