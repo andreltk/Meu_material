@@ -10,7 +10,18 @@ O que acontece quando você cria uma nova ramificação? Bem, isso cria um novo 
 
 Para alternar para uma ramificação existente, execute o comando ```git checkout``` . Vamos mudar para o novo ramo de teste :
 ```
-git checkout teste 
+git checkout teste
 ```
 Isso move _HEAD_ para apontar para o ramo de _teste_. 
 
+OBS: Pode executar o comando git checkout com a opção -b :
+```
+git checkout -b teste
+```
+Este é um atalho para:
+```
+git branch teste
+
+git checkout teste
+```
+Criando um novo ponteiro de ramificação.
