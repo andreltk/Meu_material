@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Linguagem de Marcação de Hipertexto</title>
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+        
+        <style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        <style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        
+        
+    </head>
+    <body class="vscode-light">
+        <h1 id="linguagem-de-marca%c3%a7%c3%a3o-de-hipertexto">Linguagem de Marcação de Hipertexto</h1>
+<ul>
+<li>HTML descreve a estrutura de uma página na Internet</li>
+<li>HTML consists of a series of elements</li>
+<li>HTML diz ao navegador como posicionar e exibir os elementos</li>
+<li>HTML elementos são representados por tags</li>
+<li>As tags HTML rotulam partes do conteúdo, como &quot;cabeçalho&quot;, &quot;parágrafo&quot;, &quot;tabela&quot; e assim por diante</li>
+<li>Os navegadores não exibem as tags HTML, mas as usam para renderizar o conteúdo da página</li>
+</ul>
+<h2 id="tags-html">Tags HTML</h2>
+<p>Tags HTML são nomes de elementos entre colchetes angulares:</p>
+<p>o conteúdo do <code>&lt;tagname&gt;</code> entra aqui ... <code>&lt;/tagname&gt;</code></p>
+<ul>
+<li>As tags HTML normalmente vêm em pares como <code>&lt;p&gt;</code> e <code>&lt;/p&gt;</code></li>
+<li>A primeira tag em um par é a tag inicial, a segunda tag é a tag final</li>
+<li>A tag final é escrita como a tag inicial, mas com uma barra inserida antes do nome da tag .</li>
+</ul>
+<h2 id="documentos-html">Documentos HTML</h2>
+<p>Todos os documentos HTML devem começar com uma declaração de tipo de documento: <code>&lt;!DOCTYPE html&gt;</code> (HTML 5).</p>
+<p>O próprio documento HTML começa com <code>&lt;html&gt; </code>e termina com <code>&lt;/html&gt;</code>.</p>
+<p>A parte visível do documento HTML está entre <code>&lt;body&gt;</code> e <code>&lt;/body&gt;</code> .</p>
+<h3 id="estrututa-de-uma-p%c3%a1gina">Estrututa de uma página:</h3>
+<p><img src="file:////Curso%20HTML/.recursos/estrutura_html.png" alt="Estrutura" title="Somente o conteúdo dentro da seção &lt;body&gt; (a área branca acima) é exibido em um navegador."></p>
+<p>Parágrafos</p>
+<p>Como criar parágrafos?</p>
+<p>Para se declarar parágrafos em páginas pode-se utilizar a tag <p>. Entretanto, é possível aplicar diversos tipos de formatações a parágrafos. Veja o exemplo a seguir:</p>
+<pre><code>&lt;p&gt;
+    &lt;b&gt;Texto em negrito&lt;/b&gt;&lt;br&gt;
+    &lt;i&gt;Texto em itálico&lt;/i&gt;&lt;br&gt;
+    &lt;u&gt;Texto sublinhado&lt;/u&gt;&lt;br&gt;
+    &lt;sub&gt;Texto subscrito&lt;/sub&gt;&lt;br&gt;
+    &lt;sup&gt;Texto sobrescrito&lt;/sup&gt;&lt;br&gt;
+    &lt;big&gt;Texto com fonte maior do que o padrão&lt;/big&gt;&lt;br&gt;
+    &lt;small&gt;Texto com fonte menor do que o padrão&lt;/small&gt;&lt;br&gt;
+    &lt;em&gt;Texto em itálico&lt;/em&gt;&lt;br&gt;
+    &lt;strong&gt;Texto em negrito&lt;/strong&gt;
+&lt;/p&gt;
+</code></pre>
+<p>Ao exibir nosso código em um navegador veremos o seguinte resultado:</p>
+<p>Podemos ainda alterar a fonte usando o atributo style e a propriedade font-family:</p>
+<pre><code>&lt;!-- Declarando uma única fonte --&gt;
+&lt;p style=&quot;font-family: 'Times New Roman'&quot;&gt;Olá, mundo!&lt;/p&gt;
+ 
+&lt;!-- Declarando duas possíveis fontes --&gt;
+&lt;p style=&quot;font-family: 'Helvetica, Arial'&quot;&gt;Olá, mundo novamente!&lt;/p&gt;
+</code></pre>
+<p>Observe que o trecho...</p>
+<pre><code>&lt;!-- Declarando uma única fonte --&gt;
+</code></pre>
+<p>... não é mostrado na tela do navegador. Use os símbolos de <!-- e --> para inserir comentários. Comentários permitem a organização do código.</p>
+<p>Quebras de linha</p>
+<p>Podemos usar a tag <br> para inserir quebras de linha em nossa página.</p>
+<p>Tags de títulos</p>
+<p>São 6 ao todo:</p>
+<pre><code>&lt;h1&gt;Título 1&lt;/h1&gt;
+ 
+&lt;h2&gt;Título 2&lt;/h2&gt;
+ 
+&lt;h3&gt;Título 3&lt;/h3&gt;
+ 
+&lt;h4&gt;Título 4&lt;/h4&gt;
+ 
+&lt;h5&gt;Título 5&lt;/h5&gt;
+ 
+&lt;h6&gt;Título 6&lt;/h6&gt;
+</code></pre>
+<h1 id="declara%c3%a7%c3%a3o-doctype">Declaração  &lt;!DOCTYPE&gt;</h1>
+<p>A declaração <code>&lt;!DOCTYPE&gt;</code> tem que ser a primeira coisa no seu documento HTML, antes da tag <code>&lt;html&gt;</code>.
+<code>&lt;!DOCTYPE&gt;</code> não é uma tag HTML; é uma  instrução ao navegador sobre qual versão do HTML a página em questão foi escrita. Enquanto no HTML 5 existe só uma, em versões antigas havia várias como no exemplos abaixos:</p>
+<ul>
+<li>HTML 5</li>
+</ul>
+<pre><code><code><div>&lt;!DOCTYPE html&gt; 
+</div></code></code></pre>
+<ul>
+<li>HTML 4.01 Strict</li>
+</ul>
+<pre><code><code><div>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01//EN&quot; &quot;http://www.w3.org/TR/html4/strict.dtd&quot;&gt;
+</div></code></code></pre>
+<ul>
+<li>HTML 4.01 Transitional</li>
+</ul>
+<pre><code><code><div>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot; &quot;http://www.w3.org/TR/html4/loose.dtd&quot;&gt; 
+</div></code></code></pre>
+<ul>
+<li>HTML 4.01 Frameset</li>
+</ul>
+<pre><code><code><div>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Frameset//EN&quot; &quot;http://www.w3.org/TR/html4/frameset.dtd&quot;&gt;
+</div></code></code></pre>
+
+    </body>
+    </html>
