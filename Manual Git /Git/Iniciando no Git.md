@@ -97,6 +97,31 @@ Há um ciclo, onde quando você adiciona arquivos, o Git os considera modificado
 
 ## Vendo o estado das coisas
 
+## Desfazendo um _Commit_
+
+Em qualquer estágio, você talvez queira desfazer algo. Aqui, vamos rever algumas ferramentas básicas para desfazer modificações que porventura tenha feito. Seja cuidadoso, porque nem sempre você pode voltar uma alteração desfeita. Essa é uma das poucas áreas do Git onde pode perder algum trabalho feito se você cometer algum engano.
+
+Para desfazer o commit, precisamos criar um commit que deleta as modificações feitas pelo commit indesejado.
+Execute:
+```
+git revert HEAD
+```
+Um dos motivos mais comuns para desfazer um comando, aparece quando você executa um commit muito cedo e possivelmente esquecendo de adicionar alguns arquivos ou você escreveu a mensagem do commit de forma equivocada. Se você quiser refazer este commit, execute o commit novamente usando a opção --amend:
+```
+git commit --amend
+```
+Esse comando pega a área stage e a usa para realizar o commit. Se você não fez nenhuma alteração desde o último commit (por exemplo, se você executar o comando imediatamente depois do commit anterior), então sua imagem dos arquivos irá ser exatamente a mesma, e tudo o que você alterará será a mensagem do commit.
+
+Por exemplo, se você fizer um commit e então lembrar que esqueceu de colocar no stage as modificações de um arquivo que você quer adicionar no commit, você pode fazer algo semelhante a isto:
+```
+$ git commit -m 'initial commit'
+$ git add forgotten_file
+$ git commit --amend
+```
+No final das contas você termina com um único commit – O segundo commit substitui o resultante do primeiro.
+
+
+
 ## Ignorando uns arquivos
 
 Caso exista alguns tipos ou arquivos específicos que não deseja que sejam adicionados automaticamente ou monitorados, é possível criar um arquivo chamado _.gitignore_ listando tais exceções. Um exemplo de _.gitignore_:
