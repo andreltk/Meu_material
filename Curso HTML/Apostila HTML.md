@@ -30,6 +30,43 @@ A parte visível do documento HTML está entre ```<body>``` e ```</body>``` .
 ### Estrututa de uma página:
 ![Estrutura](/Curso%20HTML/.recursos/estrutura_html.png "Somente o conteúdo dentro da seção <body> (a área branca acima) é exibido em um navegador.")
 
+## Elementos
+
+Um elemento HTML geralmente consiste em uma tag inicial e uma tag final , com o conteúdo inserido entre:
+
+```
+< tagname > O conteúdo entra aqui ... < / tagname >
+```
+Elementos HTML sem conteúdo são chamados de elementos vazios. Os elementos vazios não possuem uma tag final, como o elemento ```<br>``` (que indica uma quebra de linha)
+
+O elemento HTML é tudo, desde a tag inicial até a tag final: 
+
+## Atributos HTML
+
+- Todos os elementos HTML podem ter atributos
+- Atributos fornecem informações adicionais sobre um elemento
+- Os atributos são sempre especificados na tag inicial
+- Os atributos geralmente vêm em pares nome / valor, como: __name = "value"__
+
+Uma lista completa de atributos disponível em https://www.w3schools.com/html/html_attributes.asp
+
+
+
+<br><br><br><br><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
