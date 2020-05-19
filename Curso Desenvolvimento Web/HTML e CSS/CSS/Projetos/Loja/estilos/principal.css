@@ -1,0 +1,139 @@
+/*
+.class
+#id
+Exemplo:
+p {
+  color: red;
+  text-align: center;
+}
+*/
+
+.cabecalho{
+    display: block;
+    height: 100px;
+    background-color: #5a4cae; 
+    border: 2px solid #3a316f;
+    border-radius: 3px;
+    padding: 2px;
+}
+
+#logoCabecalho{
+    height: 80px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+}
+
+#linksCabecalho{
+    float: right;
+   
+    margin-top: 20px;
+    margin-right: 10px;
+    padding-top: 20px;
+}
+
+.link_c{
+    display: inline-block;
+    background-color: #e0dceb;
+    border-left: 6px solid #3a316f;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin-right: 10px;
+    margin-bottom: 15px;
+    padding: 12px;
+
+}
+
+.painel{
+  float: left;
+  margin-top: 50px;
+}
+
+.esquerdo{
+
+    width: 18%;
+    padding: 9.5px;
+}
+
+.central{
+
+   width: 60%;
+   padding: 15px;
+
+   
+}
+
+.direito{
+    width: 12%;
+    background-color: #5a4cae;
+    color: #ffffff;
+    border-left: 4px;
+    border-color: #505050;
+    padding-left: 10px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 14px;
+    
+}
+
+
+
+#categorias{
+    width: 100%;
+    text-align: left;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 18px;
+    color: #3a316f;
+   
+}
+.categoria{
+    display: block;
+    color: #ffffff;
+    text-decoration: none;
+    background-color: #3a316f;
+    border: 4px solid #5a4cae;
+    border-style: hidden hidden hidden solid;
+    border-radius: 5px;
+    margin-top: 5px;
+    padding: 10px;
+}
+
+.textoDestaque{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30px;
+    color: #3a316f;
+}
+
+
+.destaquePrincipal{
+  width: 100%;
+}
+
+.imagemDestaque{
+  width: 99%;
+  border: 2px #505050;
+  border-radius: 3px;
+  border-style: none solid solid none;
+}
+
+.produtoPrincipal{
+  display: inline-block;
+  width: 32%;
+
+  height: auto;
+ 
+
+}
+
+.imagemProduto{
+ 
+  width: 100%;
+}
+
+.textoProduto{
+  font-size: 20px;
+  font-family: sans-serif;
+  text-align: center;
+
+}
